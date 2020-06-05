@@ -1,9 +1,9 @@
 #open the dna .txt file
 import importlib
-moduleName = input('dna.txt')
+moduleName = input('DNA_sequence_original.txt')
 importlib.import_module(moduleName)
 
-inputfile="dna.txt" #make sure to put your file in the right directory
+inputfile="DNA_sequence_original.txt" #make sure to put your file in the right directory
 f=open(inputfile,"r")
 seq=f.read()
 # >>>seq   #check the DNA sequence
