@@ -1,4 +1,4 @@
-#open the original DNA sequence .txt file
+#open the dna .txt file
 import importlib
 moduleName = input('dna.txt')
 importlib.import_module(moduleName)
@@ -7,13 +7,13 @@ inputfile="dna.txt" #make sure to put your file in the right directory
 f=open(inputfile,"r")
 seq=f.read()
 # >>>seq   #check the DNA sequence
-seq=seq.replace("\n","") #you will see "\n" characters messing with our DNA sequence, so we are cleaning them off the sequence.
+seq=seq.replace("\n","") #you will see "\n" characters messing with the DNA sequence, so by seq.replace we are cleaning them off the sequence.
 seq=seq.replace("\r","")
 # >>>seq   #check the DNA sequence
 def translate(seq):
     """
     Translate a string containing a nucleotide sequence into a string containing the corresponding sequence of amino acids .
-    Nucleotides are translated in triplets using the table dictionary; each amino acid 4 is encoded with a string of length 1.
+    Nucleotides are translated in triplets using the aminoacids base dictionary; each amino acid 4 is encoded with a string of length 1.
     """
     AMINOACIDS_BASE = {'ATT': 'I', 'ATC': 'I', 'ATA': 'I',
 'CTT': 'L', 'CTC': 'L', 'CTA': 'L', 'CTG': 'L', 'TTA': 'L', 'TTG': 'L',
@@ -37,7 +37,7 @@ def mutate(inputfile):
 prt = mutate("normalDNA.txt")
 dna = mutate("mutatedDNA.txt")
 # >>>translate(dna)
-# >>>translate(dna[20:938])  translating the DNA sequence into a protein sequence
+# >>>translate(dna[20:938])  translating the DNA sequence
 p = translate(dna[20:935]) #character = tri base pair
 p == prt 
 
