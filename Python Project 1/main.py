@@ -1,4 +1,4 @@
-#open the dna .txt file
+#open the DNA_sequence_original .txt file
 import importlib
 moduleName = input('DNA_sequence_original.txt')
 importlib.import_module(moduleName)
