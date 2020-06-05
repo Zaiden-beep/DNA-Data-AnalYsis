@@ -1,5 +1,9 @@
 #open the original DNA sequence .txt file
-inputfile="DNAFile.txt" #make sure to put your file in the right directory
+import importlib
+moduleName = input('dna.txt')
+importlib.import_module(moduleName)
+
+inputfile="dna.txt" #make sure to put your file in the right directory
 f=open(inputfile,"r")
 seq=f.read()
 # >>>seq   #check the DNA sequence
@@ -8,53 +12,31 @@ seq=seq.replace("\r","")
 # >>>seq   #check the DNA sequence
 def translate(seq):
     """
-    Now: Write a function called translate that, when given a DNA sequence of arbitrary length, identifies and returns the amino acid sequence of the DNA using the amino acid SLC code. For example: DNA Input: ATTCTCATA  Output: ILI 
-    There are many different amino acids so this may get a bit repetitive. Just do the first five Amino Acids (i.e I L V F M) and print an 'X' for any other codon. Note that the program must be able to handle DNA sequences that are not of a length divisible by 3. 
-    
+    Translate a string containing a nucleotide sequence into a string containing the corresponding sequence of amino acids .
     Nucleotides are translated in triplets using the table dictionary; each amino acid 4 is encoded with a string of length 1.
     """
-    #this is a dictionary table
-    
-    table = {
-        'ATA':'I', 'ATC':'I', 'ATT':'I', 'ATG':'M',
-        'ACA':'T', 'ACC':'T', 'ACG':'T', 'ACT':'T',
-        'AAC':'N', 'AAT':'N', 'AAA':'K', 'AAG':'K',
-        'AGC':'S', 'AGT':'S', 'AGA':'R', 'AGG':'R',                  
-        'CTA':'L', 'CTC':'L', 'CTG':'L', 'CTT':'L',
-        'CCA':'P', 'CCC':'P', 'CCG':'P', 'CCT':'P',
-        'CAC':'H', 'CAT':'H', 'CAA':'Q', 'CAG':'Q',
-        'CGA':'R', 'CGC':'R', 'CGG':'R', 'CGT':'R',
-        'GTA':'V', 'GTC':'V', 'GTG':'V', 'GTT':'V',
-        'GCA':'A', 'GCC':'A', 'GCG':'A', 'GCT':'A',
-        'GAC':'D', 'GAT':'D', 'GAA':'E', 'GAG':'E',
-        'GGA':'G', 'GGC':'G', 'GGG':'G', 'GGT':'G',
-        'TCA':'S', 'TCC':'S', 'TCG':'S', 'TCT':'S',
-        'TTC':'F', 'TTT':'F', 'TTA':'L', 'TTG':'L',
-        'TAC':'Y', 'TAT':'Y', 'TAA':'_', 'TAG':'_',
-        'TGC':'C', 'TGT':'C', 'TGA':'_', 'TGG':'W',
-    }
+    AMINOACIDS_BASE = {'ATT': 'I', 'ATC': 'I', 'ATA': 'I',
+'CTT': 'L', 'CTC': 'L', 'CTA': 'L', 'CTG': 'L', 'TTA': 'L', 'TTG': 'L',
+'GTT': 'V', 'GTC': 'V', 'GTA': 'V', 'GTG': 'V',
+'TTT': 'F', 'TTC': 'F',
+'ATG': 'M'}
+        
     protein=""
     if len(seq)%3==0:
         for i in range(0,len(seq),3):
             codon=seq[i:i+3]
-            protein+=table[codon]
+            protein+=AMINOACIDS_BASE[codon]
     return protein
-def read_seq(inputfile):
+def mutate(inputfile):
     with open(inputfile,"r") as f:
         seq=f.read()
     seq=seq.replace("\n","")
     seq=seq.replace("\r","")
     return seq
 
-prt = read_seq("amino_acid_sequence_original.txt")
-dna = read_seq("DNAFile.txt")
-# >>>translate(dna)
-# >>>translate(dna[20:938])  translating the DNA sequence into a protein sequence
-p=translate(dna[20:935]) #character = tri base pair
-p==prt 
+prt = mutate("normalDNA.txt") # >>>translate(dna)
+dna = mutate("mutatedDNA.txt") # >>>translate(dna[20:938])  translating the DNA sequence 
 
-'''
-prt==p[:-1] #False
-p=translate(dna[20:938])
-prt==p[:-1] #True
-'''
+p = translate(dna[20:935]) #character = tri base pair
+p == prt 
+
