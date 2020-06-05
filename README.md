@@ -1,6 +1,7 @@
 # DNA-Data-AnalYsis
 
-##Lauguage
+## Technologies
+
 *Python
 
 Create a programme that simulates the effects of a single nucleotide polymorphism that leads to sickle Cell Disease.
