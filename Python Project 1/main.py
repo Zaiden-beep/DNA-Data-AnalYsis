@@ -26,7 +26,7 @@ AMINOACIDS_BASE = {
     'TAC':'Y', 'TAT':'Y', 'TAA':'_', 'TAG':'_', 
     'TGC':'C', 'TGT':'C', 'TGA':'_', 'TGG':'W'} 
         
-#instead of writting a regualr for loop i am using a rage from 0 - to the length of the SLC/ORF - to step 3
+#instead of writting a regular for loop i am using a rage from 0 - to the length of the SLC(ORF) - to step 3
         
 def Condons2Protein(SLC, AMINOACIDS_BASE ):
    protein=''
@@ -49,7 +49,7 @@ Condons2Protein("GAG", AMINOACIDS_BASE)
     file1.close()
 
     
-    file2 = open("normalDNA.txt", "w")
+    file2 = open("normalDNA.txt","w")
 
     file2.write(normalDNA)
 
